@@ -1,0 +1,117 @@
+'use strict';
+
+describe('kickstartRigFeApp cfcLogin', function () {
+
+  var form, email, password,news;
+
+  beforeEach(function () {
+    browser.get('http://web.chelsea.rig/sandbox/#!/');
+    form = element(by.name('$ctrl.form'));
+    email = element(by.model('$ctrl.formData.loginID'));
+    password = element(by.model('$ctrl.formData.password'));
+   // news=element(by.model('$ctrl.formData.news'));
+   // {active: $ctrl.routeIs('/news')}
+  });
+  
+
+//  it('should show a login form', function () {
+//    expect(form.isPresent()).toBe(true);
+//  });
+//
+//  it('should show warning message for empty email', function () {
+//    var message = email.element(by.xpath('following-sibling::div/span[@ng-message="required"]'));
+//    email.click();
+//    password.click();
+//    expect(message.isDisplayed()).toBe(true);
+//  });
+//
+//  it('should show warning message for invalid email', function () {
+//    var message = email.element(by.xpath('following-sibling::div/span[@ng-message="email"]'));
+//    email.sendKeys('invalidemail.com');
+//    password.click();
+//    expect(message.isDisplayed()).toBe(true);
+//  });
+//  it('should not show warning message for valid email', function () {
+//    var message = email.element(by.xpath('following-sibling::div/span[@ng-message="email"]'));
+//    email.sendKeys('valid@email.com');
+//    password.click();
+//    expect(message.isPresent()).toBe(false);
+//  });
+  
+     
+//	Check Click on News feed Link
+	it('should Click the NewsFeed Form/Page', function (newslink) {
+		//var newslink=element(by.buttonText('news'));
+		var newslink=element(by.buttonText('news'));
+		System.out.println("clicked");
+		
+		newslink.click();
+		//expect(element(by.css('i.fa.fa-check-circle')).getAttribute('class')).not.toMatch('processComplete');
+
+		// perform some action
+
+		//expect(element(by.css('i.fa.fa-check-circle')).getAttribute('class')).toMatch('processComplete');
+		expect(newslink.isDisplayed()).toBe(true);
+	});
+	
+	
+	
+	// check click on the Featured Linkf
+	
+	it('it should click the Featured Link', function(featuredlink)
+			{
+	        var featuredlink=element(by.css('.featuredarticle'));
+		    featuredlink.click();
+	        expect(featuredlink.isDisplayed().toBe(true));
+		
+			});
+	
+	
+	
+
+
+	// to check the navigation link in the trending page scrolling towards left
+	// and right
+
+	it('should Click the Navigation Link in the trending session towards Right/Left', function () {
+		var scrollleft=element(by.cssName('.glyphicon glyphicon-chevron-left'));
+		//var scrolleft = element(by.xpath('/html/body/div[2]/cfc-news-landing/div[2]/div[2]/cfc-carousel/div[2]/button[1]/span'));
+		scrolleft.click();
+		expect(scrollleft.isDisplayed()).toBe(true);
+	});
+
+//	to check the navigation link page scrolling towards right
+
+	it('should Click the Navigation Link in the trending session towards Right/Left', function () {
+		//var scrollright = news.element(by.xpath('/html/body/div[2]/cfc-news-landing/div[2]/div[2]/cfc-carousel/div[2]/button[2]/span'));
+		var scrollright=element(by.className('.glyphicon glyphicon-chevron-right'));
+		scrollright.click();
+		expect(scrollright.isDisplayed()).toBe(true);
+	});
+
+	// click the latest link
+
+	it('should click the Latest Link in the news landing page', function () {
+		var latest = element(by.css('//*[@id="navbar"]/ul/li[1]'));
+		latest.click();
+	});
+
+	// check click news link
+
+	it('should Click the Navigation Link in the trending session towards Right/Left', function () {
+		var clicknews = element(by.xpath('/html/body/div[2]/cfc-news-landing/div[2]/div[2]/cfc-filter-nav/ul/li[2]/a'));
+		clicknews.click();
+		expect(clicknews.isDisplayed()).toBe(true);
+	});
+
+	// check videos links
+
+
+	it('should Click the Navigation Link in the trending session towards Right/Left', function () {
+		var videos = element(by.xpath('/html/body/div[2]/cfc-news-landing/div[2]/div[2]/cfc-filter-nav/ul/li[3]/a'));
+		videos.click();
+		expect(videos.isDisplayed()).toBe(true);
+	});
+
+
+});
